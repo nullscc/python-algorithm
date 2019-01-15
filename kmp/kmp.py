@@ -42,5 +42,7 @@ if __name__ == "__main__":
         s = random_str(20)
         n = random.randint(0, 15)
         t = s[n:n+3]
-        assert kmp(s, t) != -1
+        index = kmp(s, t)
+        assert index != -1
+        assert s[index:index+3] == t
 
