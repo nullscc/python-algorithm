@@ -16,6 +16,7 @@ def print_mini_span_tree(gragh):
     # 当根据lowcost找到最小代价的坐标ｋ,需要根据此列表中的值来找到与ｋ坐标连线的那个点
     adjvex = []
 
+    # 这里找到与起点相连的所有的边
     for i in range(len(gragh)):
         lowcost.append(gragh[0][i])
         adjvex.append(0)
@@ -24,6 +25,7 @@ def print_mini_span_tree(gragh):
         min_weight = inf
         k = 0
 
+        # 遍历一次就能找到一个与已经形成的边相连的且权值最小的边
         for j in range(1, len(gragh)):
             if (lowcost[j] != 0) and lowcost[j] < min_weight:
                 min_weight = lowcost[j]
@@ -33,6 +35,7 @@ def print_mini_span_tree(gragh):
 
         lowcost[k] = 0
 
+        # 这里是为了将与已经找到的边相连的边相关的权值与起始点存入数据，以便在下次循环中使用
         for j in range(1, len(gragh)):
             if lowcost[j] != 0 and gragh[k][j] < lowcost[j]:
                 lowcost[j] = gragh[k][j]
